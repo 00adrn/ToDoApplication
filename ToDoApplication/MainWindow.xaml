@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Adrian's To Do List Application" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="28*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- TITLE AREA -->
+        <Border Grid.Row="0" Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,0, 1,1">
+            <Grid >
+                <TextBlock Text="New Item"
+                           FontSize="13"
+                           FontFamily="Arial"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1"
+                BorderBrush="Black"
+                BorderThickness="0,0, 0,1">
+            <Grid >
+                <TextBlock Text="Current List"
+                           FontSize="13"
+                           FontFamily="Arial"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+        
+        <!-- TASK CREATION AREA -->
+        <Border Grid.Row="1" Grid.Column="0"
+            BorderBrush="Black"
+            BorderThickness="0,0,1,0">
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+            </Grid>
+        </Border>
     </Grid>
 </Window>
