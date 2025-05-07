@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoApplication.View;
 
 namespace ToDoApplication;
 
@@ -16,9 +17,11 @@ namespace ToDoApplication;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private ViewSession _viewSession = new ViewSession();
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = _viewSession;
     }
 
     private void TextBox_GainFocus(object sender, RoutedEventArgs e)
@@ -39,5 +42,10 @@ public partial class MainWindow : Window
             textBox.Text = (string)textBox.Tag;
             textBox.Foreground = Brushes.Gray;
         }
+    }
+
+    private void btn_Create(object sender, RoutedEventArgs e)
+    {
+        _viewSession.AddTask("Test Task", "This is a test task", 20251002);
     }
 }

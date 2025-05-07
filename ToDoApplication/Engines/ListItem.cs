@@ -2,7 +2,7 @@
 
 namespace ToDoApplication.Engines;
 
-public class ListItem
+public class TaskItem
 {
     public string _itemName
     {
@@ -14,12 +14,13 @@ public class ListItem
         get { return _itemDescription;} set { _itemDescription = value; }
     }
     
+    public int _dueDate { get; set; }    
     public bool _itemStatus
     {
         get { return _itemStatus; } set { _itemStatus = value; }
     }
     
-    public ListItem (string itemName, string itemDescription) { _itemName = itemName; _itemDescription = itemDescription; _itemStatus = false; }
+    public TaskItem (string itemName, string itemDescription, int date) { _itemName = itemName; _itemDescription = itemDescription; _itemStatus = false; _dueDate = date; }
 
     public void RevertStatus()
     {

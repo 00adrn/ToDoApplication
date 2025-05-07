@@ -14,8 +14,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         
         <!-- TITLE AREA -->
@@ -24,7 +24,7 @@
                 BorderThickness="0,1, 1,1">
             <Grid >
                 <TextBlock Name="tblockNewItem"
-                           Text="New Item"
+                           Text="New Task"
                            FontSize="13"
                            FontFamily="Arial"
                            FontWeight="SemiBold"
@@ -37,7 +37,7 @@
                 BorderThickness="0,1, 0,1">
             <Grid >
                 <TextBlock Name="tblockCurrentList"
-                           Text="Current List"
+                           Text="Incomplete Tasks"
                            FontSize="13"
                            FontFamily="Arial"
                            FontWeight="SemiBold"
@@ -48,9 +48,19 @@
         
         <!-- TASK CREATION AREA -->
         <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
-            BorderBrush="Black"
-            BorderThickness="0,0,1,0">
-            <userControls:TaskCreation/>
+                BorderBrush="Black"
+                BorderThickness="0,0,1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <userControls:TaskCreation Grid.Row="0"/>
+                    <Button Grid.Row="1"  
+                            Margin="60, 10,60,10"
+                            Content="Create"
+                            Click="btn_Create"/>
+                </Grid>
         </Border>
     </Grid>
 </Window>

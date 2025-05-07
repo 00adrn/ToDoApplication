@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="Auto" d:DesignWidth="300">
      <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -28,11 +28,12 @@
                                    Text="Task: "
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                        <local:ClearableTextBox Grid.Column="1"
-                                 x:Name="tboxEnterTaskName"
+                        <TextBox Grid.Column="1"
+                                 Name="tboxEnterTaskName"
                                  Tag="Enter Task Name"
+                                 Text="Enter Task Name"
                                  Foreground="Gray"
-                                 Margin="3,3,3,3"
+                                 Margin="3,6,3,6"
                                  LostFocus="TextBox_LostFocus"
                                  GotFocus="TextBox_GainFocus"/>
                     </Grid>
@@ -51,12 +52,14 @@
                                    Text="Date:"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
-                        <local:ClearableTextBox Grid.Row="0" Grid.Column="1"
+                        <TextBox Grid.Row="0" Grid.Column="1"
                                    Tag="MM/DD/YYYY"
+                                   Text="MM/DD/YYYY"
                                    Foreground="Gray"
                                    GotFocus="TextBox_GainFocus"
                                    LostFocus="TextBox_LostFocus"
-                                   Margin="3,3,3,3"/>
+                                   TextChanged="DateBox_Changed"
+                                   Margin="3,6,3,6"/>
                     </Grid>
                 </Border>
                 
@@ -79,9 +82,8 @@
                                  Foreground="Gray"
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"
-                                 TextChanged="DateBox_Changed"
                                  Height="60"
-                                 Margin="3,3,3,3"/>
+                                 Margin="3,6,3,6"/>
                     </Grid>
                 </Border>
             </Grid>
