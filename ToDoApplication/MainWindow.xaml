@@ -23,7 +23,7 @@
                 BorderBrush="Black"
                 BorderThickness="0,1, 1,1">
             <Grid >
-                <TextBlock Name="tblockNewItem"
+                <TextBlock Name="TBlockNewItem"
                            Text="New Task"
                            FontSize="13"
                            FontFamily="Arial"
@@ -36,7 +36,7 @@
                 BorderBrush="Black"
                 BorderThickness="0,1, 0,1">
             <Grid >
-                <TextBlock Name="tblockCurrentList"
+                <TextBlock Name="TBlockCurrentList"
                            Text="Incomplete Tasks"
                            FontSize="13"
                            FontFamily="Arial"
@@ -55,7 +55,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <userControls:TaskCreation Grid.Row="0"/>
+                    <userControls:TaskCreation Grid.Row="0" 
+                                               Name="TaskMake"/>
                     <Button Grid.Row="1"  
                             Margin="60, 10,60,10"
                             Content="Create"

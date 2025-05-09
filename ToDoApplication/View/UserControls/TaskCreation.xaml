@@ -49,10 +49,12 @@
                             <ColumnDefinition Width="67*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0"
+                                   Name="tboxTaskName"
                                    Text="Date:"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
+                                   Name="tboxDate"
                                    Tag="MM/DD/YYYY"
                                    Text="MM/DD/YYYY"
                                    Foreground="Gray"
@@ -77,6 +79,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
+                                 Name="tboxDescription"
                                  Tag="Enter Description Here..."
                                  Text=" Enter Description Here..."
                                  Foreground="Gray"

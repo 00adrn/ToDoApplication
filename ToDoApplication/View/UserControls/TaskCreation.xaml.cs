@@ -17,7 +17,43 @@ public partial class TaskCreation : UserControl
     {
         InitializeComponent();
     }
+
+    public string taskText
+    {
+        get
+        {
+            return tboxTaskName.Text;
+        }
+        set
+        {
+            tboxTaskName.Text = value;
+        }
+    }
     
+    public string dateText
+    {
+        get
+        {
+            return tboxDate.Text;
+        }
+        set
+        {
+            tboxDate.Text = value;
+        }
+    }
+    
+    public string descriptionText
+    {
+        get
+        {
+            return tboxDescription.Text;
+        }
+        set
+        {
+            tboxDescription.Text = value;
+        }
+    }
+
     private void TextBox_GainFocus(object sender, RoutedEventArgs e)
     {
         TextBox textBox = sender as TextBox;

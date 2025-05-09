@@ -14,7 +14,7 @@ public class ViewSession : BaseNotification
     {
         tasks = new ObservableCollection<TaskItem>();
     }
-    public void AddTask(string title, string description, int date)
+    public void AddTask(string title, string description, string date)
     {
         tasks.Add(new TaskItem(title, description, date));
         Console.WriteLine($"Added task {title}, due {date}, description: \n {description}");

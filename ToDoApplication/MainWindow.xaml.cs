@@ -46,6 +46,6 @@ public partial class MainWindow : Window
 
     private void btn_Create(object sender, RoutedEventArgs e)
     {
-        _viewSession.AddTask("Test Task", "This is a test task", 20251002);
+        _viewSession.AddTask(TaskMake.taskText, TaskMake.descriptionText, TaskMake.dateText);
     }
 }
