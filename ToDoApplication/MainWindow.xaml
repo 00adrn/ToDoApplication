@@ -56,12 +56,18 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <userControls:TaskCreation Grid.Row="0" 
-                                               Name="TaskMake"/>
+                                               x:Name="TaskMake"/>
                     <Button Grid.Row="1"  
                             Margin="60, 10,60,10"
                             Content="Create"
-                            Click="btn_Create"/>
+                            Click="btn_CreateTask"/>
                 </Grid>
         </Border>
+        <Grid Grid.Row="1" Grid.Column="1"
+              Name="GridTaskList">
+            <StackPanel x:Name="SPTasks"
+                        Margin="10">
+            </StackPanel>
+        </Grid> 
     </Grid>
 </Window>

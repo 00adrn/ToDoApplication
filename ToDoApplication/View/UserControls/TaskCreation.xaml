@@ -80,8 +80,8 @@
                                    VerticalAlignment="Center"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
                                  Name="tboxDescription"
-                                 Tag="Enter Description Here..."
-                                 Text=" Enter Description Here..."
+                                 Tag= "Enter Description Here..."
+                                 Text= "Enter Description Here..."
                                  Foreground="Gray"
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"
