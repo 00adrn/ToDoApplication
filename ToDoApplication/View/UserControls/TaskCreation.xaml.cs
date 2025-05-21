@@ -18,15 +18,15 @@ public partial class TaskCreation : UserControl
         InitializeComponent();
     }
 
-    public string taskText
+    public string nameText
     {
         get
         {
-            return tboxTaskName.Text;
+            return tboxEnterTaskName.Text;
         }
         set
         {
-            tboxTaskName.Text = value;
+            tboxEnterTaskName.Text = value;
         }
     }
     
@@ -77,6 +77,20 @@ public partial class TaskCreation : UserControl
     private void DateBox_Changed(object sender, RoutedEventArgs e)
     {
         TextBox textBox = sender as TextBox;
+
+        for (int i = 0; i < textBox.Text.Length; i++)
+        {
+            if (textBox.Text[i] == '/' && (i != 2 && i != 5))
+            {
+                string tempText = textBox.Text.Substring(0, i) + textBox.Text.Substring(i + 1);
+                textBox.Text = tempText;
+            }
+            else if (textBox.Text[i] != '/' && (i == 2 || i == 5))
+            {
+                string tempText = textBox.Text.Substring(0, i ) + '/' + textBox.Text.Substring(i);
+                textBox.Text = tempText;
+            }
+        }
         
         if (textBox.Text.Length == 2 || textBox.Text.Length == 5)
         {
@@ -89,4 +103,5 @@ public partial class TaskCreation : UserControl
         
         textBox.CaretIndex = textBox.Text.Length;
     }
+    
 }

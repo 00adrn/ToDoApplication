@@ -50,9 +50,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void btn_CreateTask(object sender, RoutedEventArgs e)
     {
-        _viewSession.AddTask(TaskMake.taskText, TaskMake.descriptionText, TaskMake.dateText);
+        if (TaskMake.nameText == "Enter Task Name" || TaskMake.dateText.Length != 10 || TaskMake.dateText == "MM/DD/YYYY" || TaskMake.descriptionText == "Enter Description Here...")
+        {
+            return;
+        }
+        _viewSession.AddTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText);
         var newTaskListItem = new TaskList();
-        newTaskListItem.taskNameText = TaskMake.taskText;
+        newTaskListItem.taskNameText = TaskMake.nameText;
         newTaskListItem.taskDescText = TaskMake.descriptionText;
         newTaskListItem.taskDateText = TaskMake.dateText;
         SPTasks.Children.Add(newTaskListItem);

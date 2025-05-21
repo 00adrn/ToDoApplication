@@ -49,7 +49,7 @@
                             <ColumnDefinition Width="67*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0"
-                                   Name="tboxTaskName"
+                                   Name="tblockTaskDate"
                                    Text="Date:"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
@@ -82,6 +82,7 @@
                                  Name="tboxDescription"
                                  Tag= "Enter Description Here..."
                                  Text= "Enter Description Here..."
+                                 TextWrapping="Wrap"
                                  Foreground="Gray"
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"

@@ -6,20 +6,24 @@
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="*">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="5" FontSize="14"/>
+    <Border BorderBrush="Gray"
+            BorderThickness="0,0,0,0.5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="5" FontSize="14"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Name="TBlockTaskDesc" Text="TaskDesc" Margin="5" FontSize="16"
+                           TextWrapping="Wrap"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="5" FontSize="12"/>
+            </Grid>
         </Grid>
-        <Grid Grid.Row="1">
-            <TextBlock Name="TBlockTaskDesc" Text="TaskDesc" Margin="5" FontSize="16"/>
-        </Grid>
-        <Grid Grid.Row="2">
-            <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="5" FontSize="12"/>
-        </Grid>
-    </Grid>
+    </Border>
 </UserControl>

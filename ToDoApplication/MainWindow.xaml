@@ -63,11 +63,19 @@
                             Click="btn_CreateTask"/>
                 </Grid>
         </Border>
-        <Grid Grid.Row="1" Grid.Column="1"
+        <!-- TASK LIST AREA -->
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
               Name="GridTaskList">
-            <StackPanel x:Name="SPTasks"
-                        Margin="10">
-            </StackPanel>
+            <ScrollViewer>
+                <StackPanel x:Name="SPTasks"
+                            Margin="10">
+                </StackPanel>
+            </ScrollViewer>
         </Grid> 
+        
+        <Grid Grid.Row="2" Grid.Column="0">
+            
+        </Grid>
+        
     </Grid>
 </Window>
