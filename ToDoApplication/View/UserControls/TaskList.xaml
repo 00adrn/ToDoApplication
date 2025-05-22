@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="*">
-    <Border BorderBrush="Gray"
-            BorderThickness="0,0,0,0.5">
+    <Border CornerRadius="6"
+            Background="#525559"
+            Margin="0,1,0,1">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -15,14 +16,18 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="5" FontSize="14"/>
+                <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="5" FontSize="14"
+                           FontWeight="Bold" 
+                           Foreground="White"/>
             </Grid>
             <Grid Grid.Row="1">
                 <TextBlock Name="TBlockTaskDesc" Text="TaskDesc" Margin="5" FontSize="16"
-                           TextWrapping="Wrap"/>
+                           TextWrapping="Wrap"
+                           Foreground="White"/>
             </Grid>
             <Grid Grid.Row="2">
-                <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="5" FontSize="12"/>
+                <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="5" FontSize="12"
+                           Foreground="White"/>
             </Grid>
         </Grid>
     </Border>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
-             d:DesignHeight="Auto" d:DesignWidth="300">
+             d:DesignHeight="*" d:DesignWidth="300">
      <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -16,8 +16,9 @@
                 
                 <!-- Task Name Entry Area -->
                 <Border Grid.Row="0" Grid.Column="0"
-                        BorderBrush="Gray"
-                        BorderThickness="0,0,0,.5">
+                        CornerRadius="4"
+                        Background="#525559"
+                        Margin="0,1,0,1">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="33*"/>
@@ -25,14 +26,18 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"
                                    Name="tblockTaskName"
+                                   Foreground="LightGray"
                                    Text="Task: "
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial Bold"
+                                   FontWeight="Bold"/>
                         <TextBox Grid.Column="1"
                                  Name="tboxEnterTaskName"
                                  Tag="Enter Task Name"
                                  Text="Enter Task Name"
                                  Foreground="Gray"
+                                 Background="LightGray"
                                  Margin="3,6,3,6"
                                  LostFocus="TextBox_LostFocus"
                                  GotFocus="TextBox_GainFocus"/>
@@ -41,8 +46,9 @@
                 
                 <!-- Task Date Entry Area -->
                 <Border Grid.Row="1" Grid.Column="0"
-                        BorderBrush="Gray"
-                        BorderThickness="0,0,0,.5">
+                        CornerRadius="4"
+                        Background="#525559"
+                        Margin="0,1,0,1">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="33*"/>
@@ -50,9 +56,12 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0"
                                    Name="tblockTaskDate"
-                                   Text="Date:"
+                                   Foreground="LightGray"
+                                   Text="Date: "
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial Bold"
+                                   FontWeight="Bold"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
                                    Name="tboxDate"
                                    Tag="MM/DD/YYYY"
@@ -61,29 +70,35 @@
                                    GotFocus="TextBox_GainFocus"
                                    LostFocus="TextBox_LostFocus"
                                    TextChanged="DateBox_Changed"
-                                   Margin="3,6,3,6"/>
+                                   Margin="3,6,3,6"
+                                   Background="LightGray"/>
                     </Grid>
                 </Border>
                 
                 <!-- Task Description entry Area -->
                 <Border Grid.Row="2"
-                        BorderBrush="Gray"
-                        BorderThickness="0,0,0,.5">
+                        CornerRadius="4"
+                        Background="#525559"
+                        Margin="0,1,0,1">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="33*"/>
                             <ColumnDefinition Width="67*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0"
-                                   Text="Description:"
+                                   Foreground="LightGray"
+                                   Text="Description: "
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial Bold"
+                                   FontWeight="Bold"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
                                  Name="tboxDescription"
                                  Tag= "Enter Description Here..."
                                  Text= "Enter Description Here..."
                                  TextWrapping="Wrap"
                                  Foreground="Gray"
+                                 Background="LightGray"
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"
                                  Height="60"

@@ -7,7 +7,7 @@
         xmlns:userControls="clr-namespace:ToDoApplication.View.UserControls"
         mc:Ignorable="d"
         Title="Adrian's To Do List Application" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#2a2c2e">
         <Grid.RowDefinitions>
             <RowDefinition Height="19"/>
             <RowDefinition Height="*"/>
@@ -21,26 +21,30 @@
         <!-- TITLE AREA -->
         <Border Grid.Row="0" Grid.Column="0"
                 BorderBrush="Black"
-                BorderThickness="0,1, 1,1">
+                BorderThickness="0,1, 1,1"
+                Background="#939596">
             <Grid >
                 <TextBlock Name="TBlockNewItem"
                            Text="New Task"
                            FontSize="13"
                            FontFamily="Arial"
                            FontWeight="SemiBold"
+                           Foreground="LightGray"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
             </Grid>
         </Border>
         <Border Grid.Row="0" Grid.Column="1"
                 BorderBrush="Black"
-                BorderThickness="0,1, 0,1">
+                BorderThickness="0,1, 0,1"
+                Background="#939596">
             <Grid >
                 <TextBlock Name="TBlockCurrentList"
                            Text="Incomplete Tasks"
                            FontSize="13"
                            FontFamily="Arial"
                            FontWeight="SemiBold"
+                           Foreground="LightGray"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
             </Grid>
@@ -57,10 +61,26 @@
                     </Grid.RowDefinitions>
                     <userControls:TaskCreation Grid.Row="0" 
                                                x:Name="TaskMake"/>
-                    <Button Grid.Row="1"  
-                            Margin="60, 10,60,10"
-                            Content="Create"
-                            Click="btn_CreateTask"/>
+                    
+                    <!-- CUSTOM BUTTON AREA -->
+                    <Border Grid.Row = "1" CornerRadius="4,4,12,12"
+                            Background="#939596">
+                        <TextBlock Text="Create"
+                                   Margin="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Arial Bold"
+                                   FontWeight="Bold"
+                                   Foreground="LightGray">
+                        </TextBlock>
+                    </Border>
+                    <Border Grid.Row = "1" CornerRadius="4,4,12,12"
+                            Background="Transparent">
+                        <Button Grid.Row="1"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Click="btn_CreateTask"/>
+                    </Border>
                 </Grid>
         </Border>
         <!-- TASK LIST AREA -->
