@@ -15,20 +15,67 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- TASK NAME AREA-->
             <Grid Grid.Row="0">
-                <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="5" FontSize="14"
+                <TextBlock Name="TBlockTaskName" Text="TaskName" Margin="10, 5, 0,5" FontSize="14"
                            FontWeight="Bold" 
                            Foreground="White"/>
             </Grid>
+            
+            <!-- TASK DESCRIPTION AREA -->
             <Grid Grid.Row="1">
-                <TextBlock Name="TBlockTaskDesc" Text="TaskDesc" Margin="5" FontSize="16"
+                <TextBlock Name="TBlockTaskDesc" Text="TaskDesc" Margin="10, 5, 0,5" FontSize="16"
                            TextWrapping="Wrap"
                            Foreground="White"/>
             </Grid>
+            
+            <!-- TASK DATE AREA-->
             <Grid Grid.Row="2">
-                <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="5" FontSize="12"
+                <TextBlock Name="TBlockTaskDate" Text="TaskDate" Margin="10, 5, 0,0" FontSize="12"
                            Foreground="White"/>
             </Grid>
+            
+            <!-- BUTTON AREA -->
+            <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+                <Button Name="btnCheck"
+                        Content="✓" 
+                        FontSize="12"
+                        FontWeight="Heavy"
+                        Height="24"
+                        Width="24"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Foreground="#939596"
+                        Background="#2a2c2e"
+                        BorderBrush="#939596"
+                        BorderThickness="2"
+                        Margin="20, 20, 10, 0"/>
+                        <!--Foreground="#10c440"
+                        Background="#056b2c"
+                        BorderBrush="#10c440"-->
+                <Button Name="btnDelete"
+                        Content="X" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Height="24"
+                        Width="24"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Foreground="#939596"
+                        Background="#2a2c2e"
+                        BorderBrush="#939596"
+                        BorderThickness="2"
+                        Margin="20, 52, 10, 10"/> 
+                        <!--Foreground="#c41010"
+                        Background="#6b0505"
+                        BorderBrush="#c41010"-->
+            </Grid>
         </Grid>
+        
     </Border>
 </UserControl>

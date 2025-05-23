@@ -55,11 +55,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             return;
         }
         _viewSession.AddTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText);
-        var newTaskListItem = new TaskList();
-        newTaskListItem.taskNameText = TaskMake.nameText;
-        newTaskListItem.taskDescText = TaskMake.descriptionText;
-        newTaskListItem.taskDateText = TaskMake.dateText;
+        var newTaskListItem = new TaskList(_viewSession);
         SPTasks.Children.Add(newTaskListItem);
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("_viewSession"));
     }
+    
 }

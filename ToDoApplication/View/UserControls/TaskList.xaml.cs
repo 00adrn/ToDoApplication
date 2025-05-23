@@ -1,4 +1,6 @@
 ﻿using System.Windows.Controls;
+using Microsoft.Win32;
+using ToDoApplication.Engines;
 
 namespace ToDoApplication.View.UserControls;
 
@@ -40,8 +42,19 @@ public partial class TaskList : UserControl
         }
     }
 
-    public TaskList()
+    public int taskNum
+    {
+        get;
+        set;
+    }
+
+    public TaskList(ViewSession session)
     {
         InitializeComponent();
+        TaskItem task = session.tasks[session.tasks.Count - 1];
+        taskNameText = task._itemName;
+        taskDescText = task._itemDescription;
+        taskDateText = task._dueDate;
+        taskNum = session.taskCount - 1;
     }
 }
