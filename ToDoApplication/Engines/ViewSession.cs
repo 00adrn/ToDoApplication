@@ -23,7 +23,7 @@ public class ViewSession: INotifyPropertyChanged
     public TaskItem AddTask(string title, string description, string date)
     {
         Console.WriteLine($"Added task {title}, date:{date}, description:{description}");
-        TaskItem newTask = new TaskItem(title, description, date, taskCount);
+        TaskItem newTask = new TaskItem(title, description, date);
         tasks.Add(newTask);
         Console.WriteLine("\nCurrent Tasks:");
         for (int i = 0; i < tasks.Count; i++)
