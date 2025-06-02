@@ -5,9 +5,7 @@ namespace ToDoApplication.Engines;
 public class TaskItem
 {
     public string _itemName { get; set; }
-    
     public string _itemDescription { get; set; }
-    
     public string _dueDate { get; set; }    
     public bool _itemStatus { get; set; }
     

@@ -15,16 +15,13 @@ using ToDoApplication.View.UserControls;
 
 namespace ToDoApplication;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private ViewSession _viewSession = new ViewSession();
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = this;
+        DataContext = _viewSession;
     }
     public event PropertyChangedEventHandler?  PropertyChanged;
 
@@ -54,10 +51,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         {
             return;
         }
-        _viewSession.AddTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText);
-        var newTaskListItem = new TaskList(_viewSession);
+        var newTaskListItem = new TaskList(_viewSession.AddTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText), _viewSession);
         SPTasks.Children.Add(newTaskListItem);
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("_viewSession"));
     }
+    
     
 }

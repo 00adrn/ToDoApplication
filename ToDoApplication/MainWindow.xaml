@@ -22,7 +22,8 @@
         <Border Grid.Row="0" Grid.Column="0"
                 BorderBrush="Black"
                 BorderThickness="0,1, 1,1"
-                Background="#939596">
+                Background="#939596"
+                CornerRadius="4">
             <Grid >
                 <TextBlock Name="TBlockNewItem"
                            Text="New Task"
@@ -37,7 +38,8 @@
         <Border Grid.Row="0" Grid.Column="1"
                 BorderBrush="Black"
                 BorderThickness="0,1, 0,1"
-                Background="#939596">
+                Background="#939596"
+                CornerRadius="4">
             <Grid >
                 <TextBlock Name="TBlockCurrentList"
                            Text="Incomplete Tasks"
@@ -88,16 +90,44 @@
         <!-- TASK LIST AREA -->
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
               Name="GridTaskList">
-            <ScrollViewer>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
                 <StackPanel x:Name="SPTasks"
-                            Margin="10">
-                </StackPanel>
+                            Margin="8"/>
             </ScrollViewer>
         </Grid> 
         
+        <!-- COMPLETED TASK AREA -->
         <Grid Grid.Row="2" Grid.Column="0">
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0"
+                    Background="#939596"
+                    CornerRadius="4,4,4,4">
+                <TextBlock Grid.Row="0" Name="TBlockCompletedList"
+                           Text="Completed Tasks"
+                           FontFamily="Arial"
+                           FontWeight="Bold"
+                           Foreground="LightGray"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="2"/>
+            </Border>
+            <ScrollViewer Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Hidden">
+                <ItemsControl ItemsSource="{Binding completedTasks}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <userControls:CompletedTask Margin="0,2"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
-        
     </Grid>
 </Window>

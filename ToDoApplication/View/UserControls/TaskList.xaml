@@ -54,7 +54,8 @@
                         Background="#2a2c2e"
                         BorderBrush="#939596"
                         BorderThickness="2"
-                        Margin="20, 20, 10, 0"/>
+                        Margin="20, 20, 10, 0"
+                        Click="btn_InvokeComplete"/>
                         <!--Foreground="#10c440"
                         Background="#056b2c"
                         BorderBrush="#10c440"-->
@@ -70,7 +71,8 @@
                         Background="#2a2c2e"
                         BorderBrush="#939596"
                         BorderThickness="2"
-                        Margin="20, 52, 10, 10"/> 
+                        Margin="20, 52, 10, 10"
+                        Click="btn_InvokeDelete"/> 
                         <!--Foreground="#c41010"
                         Background="#6b0505"
                         BorderBrush="#c41010"-->
