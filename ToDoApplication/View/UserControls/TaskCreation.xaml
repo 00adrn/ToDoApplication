@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
-             d:DesignHeight="Auto" d:DesignWidth="300">
+             d:DesignHeight="*" d:DesignWidth="300">
      <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
                 
@@ -33,12 +33,14 @@
                                    FontFamily="Arial Bold"
                                    FontWeight="Bold"/>
                         <TextBox Grid.Column="1"
-                                 Name="tboxEnterTaskName"
+                                 Name="TBoxEnterTaskName"
                                  Tag="Enter Task Name"
                                  Text="Enter Task Name"
+                                 VerticalAlignment="Center"
                                  Foreground="Gray"
-                                 Background="LightGray"
+                                 Background="White"
                                  Margin="3,6,3,6"
+                                 Height="Auto"
                                  LostFocus="TextBox_LostFocus"
                                  GotFocus="TextBox_GainFocus"/>
                     </Grid>
@@ -62,16 +64,15 @@
                                    VerticalAlignment="Center"
                                    FontFamily="Arial Bold"
                                    FontWeight="Bold"/>
-                        <TextBox Grid.Row="0" Grid.Column="1"
-                                   Name="tboxDate"
-                                   Tag="MM/DD/YYYY"
-                                   Text="MM/DD/YYYY"
+                        <DatePicker Grid.Row="0" Grid.Column="1"
+                                   Name="DBoxDate"
                                    Foreground="Gray"
-                                   GotFocus="TextBox_GainFocus"
-                                   LostFocus="TextBox_LostFocus"
-                                   TextChanged="DateBox_Changed"
                                    Margin="3,6,3,6"
-                                   Background="LightGray"/>
+                                   VerticalAlignment="Center"
+                                   Background="White"
+                                   BorderBrush="DarkGray"
+                                   Height="Auto"
+                                   SelectedDateChanged="DatePicker_SelectedDateChanged"/>
                     </Grid>
                 </Border>
                 
@@ -93,15 +94,15 @@
                                    FontFamily="Arial Bold"
                                    FontWeight="Bold"/>
                         <TextBox Grid.Row="0" Grid.Column="1"
-                                 Name="tboxDescription"
+                                 Name="TBoxDescription"
                                  Tag= "Enter Description Here..."
                                  Text= "Enter Description Here..."
                                  TextWrapping="Wrap"
                                  Foreground="Gray"
-                                 Background="LightGray"
+                                 Background="White"
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"
-                                 Height="60"
+                                 Height="Auto"
                                  Margin="3,6,3,6"/>
                     </Grid>
                 </Border>

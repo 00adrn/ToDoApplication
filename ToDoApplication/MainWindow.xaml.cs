@@ -22,6 +22,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         InitializeComponent();
         DataContext = _viewSession;
+        this.ResizeMode = ResizeMode.CanMinimize;
     }
     public event PropertyChangedEventHandler?  PropertyChanged;
 
@@ -47,7 +48,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void btn_CreateTask(object sender, RoutedEventArgs e)
     {
-        if (TaskMake.nameText == "Enter Task Name" || TaskMake.dateText.Length != 10 || TaskMake.dateText == "MM/DD/YYYY" || TaskMake.descriptionText == "Enter Description Here...")
+        if (TaskMake.nameText == "Enter Task Name" || (TaskMake.dateText == null) || TaskMake.descriptionText == "Enter Description Here...")
         {
             return;
         }

@@ -22,11 +22,11 @@ public partial class TaskCreation : UserControl
     {
         get
         {
-            return tboxEnterTaskName.Text;
+            return TBoxEnterTaskName.Text;
         }
         set
         {
-            tboxEnterTaskName.Text = value;
+            TBoxEnterTaskName.Text = value;
         }
     }
     
@@ -34,11 +34,12 @@ public partial class TaskCreation : UserControl
     {
         get
         {
-            return tboxDate.Text;
+            string dateString = DBoxDate.SelectedDate.ToString();
+            return dateString.Substring(0, dateString.Length - 12);
         }
         set
         {
-            tboxDate.Text = value;
+
         }
     }
     
@@ -46,11 +47,11 @@ public partial class TaskCreation : UserControl
     {
         get
         {
-            return tboxDescription.Text;
+            return TBoxDescription.Text;
         }
         set
         {
-            tboxDescription.Text = value;
+            TBoxDescription.Text = value;
         }
     }
 
@@ -74,6 +75,19 @@ public partial class TaskCreation : UserControl
         }
     }
 
+    private void DatePicker_SelectedDateChanged(object sender, RoutedEventArgs e)
+    {
+        if (dateText != null)
+        {
+            DBoxDate.Foreground = Brushes.Black;
+        }
+        else
+        {
+            DBoxDate.Foreground = Brushes.Gray;
+        }
+    }
+
+    /*
     private void DateBox_Changed(object sender, RoutedEventArgs e)
     {
         TextBox textBox = sender as TextBox;
@@ -103,5 +117,6 @@ public partial class TaskCreation : UserControl
         
         textBox.CaretIndex = textBox.Text.Length;
     }
+    */
     
 }

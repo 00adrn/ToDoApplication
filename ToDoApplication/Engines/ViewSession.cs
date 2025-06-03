@@ -48,30 +48,15 @@ public class ViewSession: INotifyPropertyChanged
 
     public void RemoveTask(TaskItem removedTask)
     {
-        foreach (TaskItem task in tasks)
-        {
-            if (task == removedTask)
-            {
-                tasks.Remove(task);
-                break;
-            }
-        }
+        tasks.Remove(removedTask);
         if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
     }
 
     public void CompleteTask(TaskItem removedTask)
     {
-        foreach (TaskItem task in tasks)
-        {
-            if (task == removedTask)
-            {
-                task._completeDate = "Completed " + DateTime.Now.ToString("MM/dd/yyyy");
-                completedTasks.Add(task);
-                tasks.Remove(task);
-                break;
-            }
-        }
-        
+        removedTask._completeDate = "Completed " + DateTime.Now.ToString("MM/dd/yyyy");
+        completedTasks.Add(removedTask);
+        tasks.Remove(removedTask);
         if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
         if(completedTasks.Count == 1) {PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedTasks)));
