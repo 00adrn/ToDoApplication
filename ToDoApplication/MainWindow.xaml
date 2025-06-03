@@ -7,6 +7,9 @@
         xmlns:userControls="clr-namespace:ToDoApplication.View.UserControls"
         mc:Ignorable="d"
         Title="Adrian's To Do List Application" Height="450" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
     <Grid Background="#2a2c2e">
         <Grid.RowDefinitions>
             <RowDefinition Height="19"/>
@@ -21,7 +24,7 @@
         <!-- TITLE AREA -->
         <Border Grid.Row="0" Grid.Column="0"
                 BorderBrush="Black"
-                BorderThickness="0,1, 1,1"
+                BorderThickness="0,0, 1,0"
                 Background="#939596"
                 CornerRadius="4">
             <Grid >
@@ -37,7 +40,7 @@
         </Border>
         <Border Grid.Row="0" Grid.Column="1"
                 BorderBrush="Black"
-                BorderThickness="0,1, 0,1"
+                BorderThickness="0,0, 0,0"
                 Background="#939596"
                 CornerRadius="4">
             <Grid >
@@ -68,7 +71,9 @@
                                                x:Name="TaskMake"/>
                     <!-- CUSTOM BUTTON AREA -->
                     <Border Grid.Row = "1" CornerRadius="4,4,12,12"
-                            Background="#939596">
+                            Background="#939596"
+                            BorderBrush="#646566"
+                            BorderThickness="1.75">
                         <TextBlock Text="Create"
                                    Margin="2"
                                    HorizontalAlignment="Center"
@@ -87,6 +92,17 @@
                     </Border>
                 </Grid>
         </Border>
+        
+        <!-- PLACEHOLDER LIST TEXT -->
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="LightGray"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Text="There are no tasks to display."
+                   Visibility="{Binding Path=taskListIsEmpty, Converter={StaticResource BoolToVis}}"/>
+        
         <!-- TASK LIST AREA -->
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
               Name="GridTaskList">
@@ -102,6 +118,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
+            <!-- COMPLETED TASK TITLE AREA -->
             <Border Grid.Row="0" Grid.Column="0"
                     Background="#939596"
                     CornerRadius="4,4,4,4">
@@ -114,11 +132,24 @@
                            VerticalAlignment="Center"
                            Margin="2"/>
             </Border>
+            
+            <!-- PLACEHOLDER LIST TEXT -->
+            <TextBlock Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="LightGray"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Text="There are no tasks to display."
+                       Visibility="{Binding Path=completedListIsEmpty, Converter={StaticResource BoolToVis}}"/>
+            
+            
+            <!-- COMPLETED TASK LIST -->
             <ScrollViewer Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Hidden">
                 <ItemsControl ItemsSource="{Binding completedTasks}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <userControls:CompletedTask Margin="0,2"/>
+                            <userControls:CompletedTask/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>

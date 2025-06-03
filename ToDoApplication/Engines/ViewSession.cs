@@ -12,7 +12,15 @@ public class ViewSession: INotifyPropertyChanged
     public ObservableCollection<TaskItem> tasks {get; set;}
     public ObservableCollection<TaskItem> completedTasks {get; set;}
     public int taskCount {get; set;}
+
+    public bool completedListIsEmpty { get { if (completedTasks.Count == 0) { return true; } else { return false; } }
+        private set { }
+    }
     
+    public bool taskListIsEmpty { get { if (tasks.Count == 0) { return true; } else { return false; } }
+        private set { }
+    }
+
     public ViewSession()
     {
         taskCount = 0;
@@ -33,6 +41,7 @@ public class ViewSession: INotifyPropertyChanged
             Console.WriteLine($"Due Date: {tasks[i]._dueDate}\n \n");
         }
         taskCount++;
+        if (tasks.Count == 1) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(tasks)));
         return newTask;
     }
@@ -47,6 +56,7 @@ public class ViewSession: INotifyPropertyChanged
                 break;
             }
         }
+        if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
     }
 
     public void CompleteTask(TaskItem removedTask)
@@ -55,13 +65,15 @@ public class ViewSession: INotifyPropertyChanged
         {
             if (task == removedTask)
             {
+                task._completeDate = "Completed " + DateTime.Now.ToString("MM/dd/yyyy");
                 completedTasks.Add(task);
                 tasks.Remove(task);
                 break;
             }
         }
         
-        
+        if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
+        if(completedTasks.Count == 1) {PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedTasks)));
     }
 }
