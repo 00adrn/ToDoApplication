@@ -25,6 +25,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         InitializeComponent();
         DataContext = _viewSession;
+        LoadTasks();
     }
 
     private void TextBox_GainFocus(object sender, RoutedEventArgs e)
@@ -87,7 +88,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         foreach (TaskItem task in _viewSession.tasks)
         {
-            SPTasks.Children.Add(new TaskList(_viewSession.AddTask(task._itemName, task._itemDescription, task._dueDate), _viewSession));
+            SPTasks.Children.Add(new TaskList(new TaskItem(task._itemName, task._itemDescription, task._dueDate), _viewSession));
             TaskMake.ResetInputs();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("_viewSession"));
         }
