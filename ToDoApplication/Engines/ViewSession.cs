@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Documents;
 using ToDoApplication.Engines;
@@ -26,6 +27,19 @@ public class ViewSession: INotifyPropertyChanged
         taskCount = 0;
         completedTasks = new ObservableCollection<TaskItem>();
         tasks = new ObservableCollection<TaskItem>();
+        //opening file
+        try
+        {
+            StreamReader fileRead = new StreamReader("taskDB.txt");
+            string readTask = fileRead.ReadLine();
+            string[] taskInfo = readTask.Split('|');
+            AddTask(taskInfo[0], taskInfo[1], taskInfo[2]);
+            fileRead.Close();
+        }
+        catch
+        {
+            Console.Write("Path not found");
+        }
     }
     
     public TaskItem AddTask(string title, string description, string date)

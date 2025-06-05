@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:ToDoApplication.View.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="*" d:DesignWidth="300">
-     <Grid Grid.Row="1" Grid.Column="0">
+    
+
+    
+    <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -39,7 +42,7 @@
                                  VerticalAlignment="Center"
                                  Foreground="Gray"
                                  Background="White"
-                                 Margin="3,6,3,6"
+                                 Margin="3,6,6,6"
                                  Height="Auto"
                                  LostFocus="TextBox_LostFocus"
                                  GotFocus="TextBox_GainFocus"/>
@@ -67,7 +70,7 @@
                         <DatePicker Grid.Row="0" Grid.Column="1"
                                    Name="DBoxDate"
                                    Foreground="Gray"
-                                   Margin="3,6,3,6"
+                                   Margin="3,6,6,6"
                                    VerticalAlignment="Center"
                                    Background="White"
                                    BorderBrush="DarkGray"
@@ -103,7 +106,7 @@
                                  GotFocus="TextBox_GainFocus"
                                  LostFocus="TextBox_LostFocus"
                                  Height="Auto"
-                                 Margin="3,6,3,6"/>
+                                 Margin="3,6,6,6"/>
                     </Grid>
                 </Border>
             </Grid>

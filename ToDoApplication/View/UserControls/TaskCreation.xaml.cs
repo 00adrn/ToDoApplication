@@ -34,12 +34,14 @@ public partial class TaskCreation : UserControl
     {
         get
         {
+            
+            if(DBoxDate.SelectedDate == null) return null;
             string dateString = DBoxDate.SelectedDate.ToString();
             return dateString.Substring(0, dateString.Length - 12);
         }
         set
         {
-
+            DBoxDate.SelectedDate = DateTime.Parse(value);
         }
     }
     
@@ -87,36 +89,17 @@ public partial class TaskCreation : UserControl
         }
     }
 
-    /*
-    private void DateBox_Changed(object sender, RoutedEventArgs e)
+    public void ResetInputs()
     {
-        TextBox textBox = sender as TextBox;
+        TBoxEnterTaskName.Text = (string)TBoxEnterTaskName.Tag;
+        TBoxEnterTaskName.Text = (string)TBoxEnterTaskName.Tag;
+        TBoxEnterTaskName.Foreground = Brushes.Gray;
+        
+        TBoxDescription.Text = (string)TBoxDescription.Tag;
+        TBoxDescription.Text = (string)TBoxDescription.Tag;
+        TBoxDescription.Foreground = Brushes.Gray;
 
-        for (int i = 0; i < textBox.Text.Length; i++)
-        {
-            if (textBox.Text[i] == '/' && (i != 2 && i != 5))
-            {
-                string tempText = textBox.Text.Substring(0, i) + textBox.Text.Substring(i + 1);
-                textBox.Text = tempText;
-            }
-            else if (textBox.Text[i] != '/' && (i == 2 || i == 5))
-            {
-                string tempText = textBox.Text.Substring(0, i ) + '/' + textBox.Text.Substring(i);
-                textBox.Text = tempText;
-            }
-        }
-        
-        if (textBox.Text.Length == 2 || textBox.Text.Length == 5)
-        {
-            textBox.Text += '/';
-        }
-        if (textBox.Text.Length > 10)
-        {
-            textBox.Text = textBox.Text.Substring(0, 10);
-        }
-        
-        textBox.CaretIndex = textBox.Text.Length;
-    }
-    */
+        DBoxDate.SelectedDate = null;
+    } 
     
 }
