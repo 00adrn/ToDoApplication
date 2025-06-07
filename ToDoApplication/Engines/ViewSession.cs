@@ -12,7 +12,7 @@ public class ViewSession: INotifyPropertyChanged
     public event PropertyChangedEventHandler?  PropertyChanged;
     public ObservableCollection<TaskItem> tasks {get; set;}
     public ObservableCollection<TaskItem> completedTasks {get; set;}
-    public int taskCount {get; set;}
+
 
     public bool completedListIsEmpty { get { if (completedTasks.Count == 0) { return true; } else { return false; } }
         private set { }
@@ -24,21 +24,29 @@ public class ViewSession: INotifyPropertyChanged
 
     public ViewSession()
     {
-        taskCount = 0;
         completedTasks = new ObservableCollection<TaskItem>();
         tasks = new ObservableCollection<TaskItem>();
         //opening file
         try
         {
-            StreamReader fileRead = new StreamReader("taskDB.txt");
-            string readTask = fileRead.ReadLine();
-            string[] taskInfo = readTask.Split('|');
-            AddTask(taskInfo[0], taskInfo[1], taskInfo[2]);
-            fileRead.Close();
+            using (StreamReader fileRead = new StreamReader("taskDB.txt"))
+            {
+                string? lineRead;
+                string[] parsedInfo;
+                while ((lineRead = fileRead.ReadLine()) != null)
+                {
+                    parsedInfo = lineRead.Split('|');
+                    AddTask(parsedInfo[0], parsedInfo[1], parsedInfo[2]);
+                }
+            }
         }
-        catch
+        catch (FileNotFoundException)
         {
             Console.Write("Path not found");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
         }
     }
     
@@ -54,7 +62,6 @@ public class ViewSession: INotifyPropertyChanged
             Console.WriteLine($"Description: {tasks[i]._itemDescription}");
             Console.WriteLine($"Due Date: {tasks[i]._dueDate}\n \n");
         }
-        taskCount++;
         if (tasks.Count == 1) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(tasks)));
         return newTask;
@@ -74,5 +81,22 @@ public class ViewSession: INotifyPropertyChanged
         if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
         if(completedTasks.Count == 1) {PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedTasks)));
+    }
+
+    public void WriteTask(string title, string description, string date)
+    {
+        try
+        {
+            using (StreamWriter fileWrite = new StreamWriter("taskDB.txt", true))
+            {
+                fileWrite.WriteLine(title + '|' + description + '|' + date);
+                fileWrite.Flush();
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("File Not Found");
+            throw;
+        }
     }
 }

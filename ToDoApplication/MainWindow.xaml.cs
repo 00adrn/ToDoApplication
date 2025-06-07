@@ -55,6 +55,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             return;
         }
         var newTaskListItem = new TaskList(_viewSession.AddTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText), _viewSession);
+        _viewSession.WriteTask(TaskMake.nameText, TaskMake.descriptionText, TaskMake.dateText);
         SPTasks.Children.Add(newTaskListItem);
         TaskMake.ResetInputs();
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("_viewSession"));
