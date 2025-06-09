@@ -21,6 +21,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private ViewSession _viewSession = new ViewSession();
     public event PropertyChangedEventHandler?  PropertyChanged;
+    private bool maximized = false;
+    private Rect restoreBounds {get; set;}
     public MainWindow()
     {
         InitializeComponent();
@@ -64,6 +66,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void Window_MouseLeftClick(object sender, MouseButtonEventArgs e)
     {
         Console.WriteLine(TaskMake.dateText);
+        if (maximized)
+        {
+            maximized = false;
+            this.Width = restoreBounds.Width;
+            this.Height = restoreBounds.Height;
+        }
         DragMove();
     }
 
@@ -74,10 +82,23 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Window_ToFullscreen(object sender, EventArgs e)
     {
-        if (WindowState != WindowState.Maximized)
-            WindowState = WindowState.Maximized;
+        if (!maximized)
+        {
+            restoreBounds = new Rect(this.Left, this.Top, this.Width, this.Height);
+            maximized = true;
+            Left = SystemParameters.WorkArea.Left;
+            Top = SystemParameters.WorkArea.Top;
+            Width = SystemParameters.WorkArea.Width;
+            Height = SystemParameters.WorkArea.Height;
+        }
         else
-            WindowState = WindowState.Normal;
+        {
+            maximized = false;
+            this.Left = restoreBounds.Left;
+            this.Top = restoreBounds.Top;
+            this.Width = restoreBounds.Width;
+            this.Height = restoreBounds.Height;
+        }
     }
 
     private void Window_Minimize(object sender, EventArgs e)

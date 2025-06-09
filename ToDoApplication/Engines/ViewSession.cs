@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Documents;
 using ToDoApplication.Engines;
 
@@ -12,6 +13,8 @@ public class ViewSession: INotifyPropertyChanged
     public event PropertyChangedEventHandler?  PropertyChanged;
     public ObservableCollection<TaskItem> tasks {get; set;}
     public ObservableCollection<TaskItem> completedTasks {get; set;}
+    public double maxHeight { get; private set; }
+    public double maxWidth { get; private set; }
 
 
     public bool completedListIsEmpty { get { if (completedTasks.Count == 0) { return true; } else { return false; } }
@@ -24,12 +27,15 @@ public class ViewSession: INotifyPropertyChanged
 
     public ViewSession()
     {
+        maxHeight = SystemParameters.WorkArea.Height;
+        maxWidth = SystemParameters.WorkArea.Width;
+        
         completedTasks = new ObservableCollection<TaskItem>();
         tasks = new ObservableCollection<TaskItem>();
         //opening file
         try
         {
-            using (StreamReader fileRead = new StreamReader("taskDB.txt"))
+            using (StreamReader fileRead = new StreamReader(GetDataPath()))
             {
                 string? lineRead;
                 string[] parsedInfo;
@@ -83,19 +89,23 @@ public class ViewSession: INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedTasks)));
     }
 
+    private string GetDataPath()
+    {
+        return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "taskDB.txt");
+    }
+
     public void WriteTask(string title, string description, string date)
     {
         try
         {
-            using (StreamWriter fileWrite = new StreamWriter("taskDB.txt", true))
+            using (StreamWriter fileWrite = new StreamWriter(GetDataPath(), true))
             {
                 fileWrite.WriteLine(title + '|' + description + '|' + date);
-                fileWrite.Flush();
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine("File Not Found");
+            Console.WriteLine(e);
             throw;
         }
     }

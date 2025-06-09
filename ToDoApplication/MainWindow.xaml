@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:ToDoApplication"
         xmlns:userControls="clr-namespace:ToDoApplication.View.UserControls"
         mc:Ignorable="d" WindowStyle="None" MouseDown="Window_MouseLeftClick"
-        Title="Adrian's To Do List Application" Height="540" Width="960">
+        Title="Adrian's To Do List Application" Height="540" Width="960" WindowStartupLocation="CenterScreen"
+        MaxHeight="{Binding maxHeight}"
+        MaxWidth="{Binding maxWidth}">
     
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" />
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
     
     <Window.Resources>
@@ -44,7 +46,7 @@
                             Foreground="#939596"
                             Background="#525559"
                             BorderBrush="#939596"
-                            BorderThickness="1.5"
+                            BorderThickness=".5"
                             Click="Window_Minimize"/>
                     <Button Content="⛶" 
                             FontSize="12"
@@ -56,7 +58,7 @@
                             Foreground="#939596"
                             Background="#525559"
                             BorderBrush="#939596"
-                            BorderThickness="1.5"
+                            BorderThickness=".5"
                             Click="Window_ToFullscreen"/>
                 <Button Content="X" 
                         FontSize="10"
@@ -68,7 +70,7 @@
                         Foreground="#939596"
                         Background="DarkRed"
                         BorderBrush="#939596"
-                        BorderThickness="1.5"
+                        BorderThickness=".5"
                         Click="Window_WindowClosed"/>
                 </StackPanel>
             </Border>
