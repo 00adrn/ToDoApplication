@@ -48,6 +48,7 @@ public partial class TaskList : UserControl
 
     public void btn_InvokeDelete(Object sender, RoutedEventArgs e)
     {
+        
         taskSession.RemoveTask(taskItem);
         var parent = this.Parent as StackPanel;
         parent.Children.Remove(this);

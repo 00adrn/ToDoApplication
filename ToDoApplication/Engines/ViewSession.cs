@@ -42,7 +42,13 @@ public class ViewSession: INotifyPropertyChanged
                 while ((lineRead = fileRead.ReadLine()) != null)
                 {
                     parsedInfo = lineRead.Split('|');
-                    AddTask(parsedInfo[0], parsedInfo[1], parsedInfo[2]);
+                    if (parsedInfo[3] == "inprogress")
+                    {
+                        AddTask(parsedInfo[0], parsedInfo[1], parsedInfo[2]);
+                    } else if (parsedInfo[3] == "completed")
+                    {
+                        completedTasks.Add(new TaskItem(parsedInfo[0], parsedInfo[1], parsedInfo[2]));
+                    }
                 }
             }
         }
@@ -76,6 +82,7 @@ public class ViewSession: INotifyPropertyChanged
     public void RemoveTask(TaskItem removedTask)
     {
         tasks.Remove(removedTask);
+        UpdateTaskDB(removedTask, false);
         if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
     }
 
@@ -84,6 +91,7 @@ public class ViewSession: INotifyPropertyChanged
         removedTask._completeDate = "Completed " + DateTime.Now.ToString("MM/dd/yyyy");
         completedTasks.Add(removedTask);
         tasks.Remove(removedTask);
+        UpdateTaskDB(removedTask, true);
         if (tasks.Count == 0) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(taskListIsEmpty)));}
         if(completedTasks.Count == 1) {PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedListIsEmpty)));}
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(completedTasks)));
@@ -100,7 +108,7 @@ public class ViewSession: INotifyPropertyChanged
         {
             using (StreamWriter fileWrite = new StreamWriter(GetDataPath(), true))
             {
-                fileWrite.WriteLine(title + '|' + description + '|' + date);
+                fileWrite.WriteLine(title + '|' + description + '|' + date + '|' + "inprogress");
             }
         }
         catch (Exception e)
@@ -108,5 +116,26 @@ public class ViewSession: INotifyPropertyChanged
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    private void UpdateTaskDB(TaskItem updatedTask, bool completed)
+    {
+        
+        List<string[]> readLines = new List<string[]>();
+        string? readLine;
+        using (StreamReader fileRead = new StreamReader(GetDataPath()))
+            while ((readLine = fileRead.ReadLine()) != null){ readLines.Add(readLine.Split('|'));}
+
+        for (int i = 0; i < readLines.Count; i++)
+        {
+            if (readLines[i][0] == updatedTask._itemName && readLines[i][3] == "inprogress")
+            {
+                if(completed) { readLines[i][3] = "completed";}
+                else {readLines.RemoveAt(i);}
+                break;
+            }
+        }
+        using (StreamWriter fileWrite = new StreamWriter(GetDataPath()))
+            for (int i = 0; i < readLines.Count; i++) { fileWrite.WriteLine(readLines[i][0]+"|"+readLines[i][1]+"|"+readLines[i][2]+"|"+readLines[i][3]); }
     }
 }
